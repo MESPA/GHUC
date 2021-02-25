@@ -1,0 +1,100 @@
+﻿@model IEnumerable<GHMNUNIDADDECAPACITACION.Models.UnidaddeCaptacion>
+
+@{
+
+    ViewBag.Title = "Reporte Requerimiento";
+}
+<link rel="stylesheet" href="~/Content/bootstrap.css" />
+<link rel="stylesheet" href="~/Content/Site.css" />
+<style>
+    /* SOLUCIONA PROBLEMA DE SOLAPAMIENTO EN TABLAS <table /> */
+    thead {
+        display: table-header-group
+    }
+
+    tfoot {
+        display: table-row-group
+    }
+
+    tr {
+        page-break-inside: avoid
+    }
+</style>
+<style></style>
+<center><h2>Reporte de Unidad de Captacion</h2></center>
+<div class="row" style=" margin-top: 15px;">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        FILIAL
+                    </th>
+                    <th>
+                        DEPARTAMENTO
+                    </th>
+                    <th>
+                        POSICION DE EMPLEADO
+                    </th>
+                    <th>
+                        FECHA DE SOLICITUD
+                    </th>
+                    <th>
+                        AREA DEL DEPARTAMENTO
+                    </th>
+                    <th>
+                        CURSO REQUERIDO
+                    </th>
+                    <th>
+                        IMPORTANCIA
+                    </th>
+                    <th>
+                        CANTIDAD DE EMPLEADOS
+                    </th>
+                    <th>
+                        REGION
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in ViewBag.result)
+            {
+                <tr>
+                    <td>
+                        @( item.filial)
+                    </td>
+                    <td>
+                        @( item.departamento)
+                    </td>
+                    <td>
+                        @(item.puestoempleado)
+                    </td>
+                    <td>
+                        @(item.fechasolicitud)
+                    </td>
+                    <td>
+                        @(item.Areadepartamento)
+                    </td>
+                    <td>
+                        @( item.cursorequerido)
+                    </td>
+                    <td>
+                        @(item.importanciacurso)
+                    </td>
+                    <td>
+                        @( item.cantidadempleados)
+                    </td>
+                    <td>
+                        @( item.Region)
+                    </td>
+
+
+
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

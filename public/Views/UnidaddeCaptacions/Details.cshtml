@@ -1,0 +1,106 @@
+﻿@model GHMNUNIDADDECAPACITACION.Models.UnidaddeCaptacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UnidaddeCaptacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.filial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puestoempleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puestoempleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechasolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechasolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Areadepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Areadepartamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cursorequerido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cursorequerido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importanciacurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importanciacurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadempleados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadempleados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechacreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechacreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estadosolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadosolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuariocreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuariocreacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idUnidaddeCaptacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

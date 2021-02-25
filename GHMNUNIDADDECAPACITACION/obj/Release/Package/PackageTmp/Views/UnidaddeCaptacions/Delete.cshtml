@@ -1,0 +1,112 @@
+﻿@model GHMNUNIDADDECAPACITACION.Models.UnidaddeCaptacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UnidaddeCaptacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.filial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puestoempleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puestoempleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechasolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechasolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Areadepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Areadepartamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cursorequerido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cursorequerido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importanciacurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importanciacurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadempleados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadempleados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechacreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechacreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estadosolicitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadosolicitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuariocreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuariocreacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

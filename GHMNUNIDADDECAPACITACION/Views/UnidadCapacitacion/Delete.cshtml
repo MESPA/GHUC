@@ -1,0 +1,98 @@
+﻿@model GHMNUNIDADDECAPACITACION.Models.UnidaddeCaptacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Estas Seguro que deseas eliminar el registro</h3>
+<div>
+    <h4>Unidad de Captacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+         Filial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filial)
+        </dd>
+
+        <dt>
+            Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento)
+        </dd>
+
+        <dt>
+            Posicion del Empleado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puestoempleado)
+        </dd>
+
+        <dt>
+            Fecha de Solicitud
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechasolicitud)
+        </dd>
+
+        <dt>
+            Nombre del Área o Dpto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Areadepartamento)
+        </dd>
+
+        <dt>
+            Curso Requerido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cursorequerido)
+        </dd>
+
+        <dt>
+            Importancia del Curso
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importanciacurso)
+        </dd>
+
+        <dt>
+            Cantidad de Empleados
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadempleados)
+        </dd>
+
+        <dt>
+            Region
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+      
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+
+        </div>
+    }
+</div>

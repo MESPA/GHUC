@@ -1,0 +1,405 @@
+﻿
+
+@{
+    ViewBag.Title = "UnidadCapacitacion";
+}
+
+<h2>Formulario de Requerimiento</h2>
+
+<form class="form-inline table-bordered center-block " method="post">
+    <div class="row">
+
+        <div class="form-group form-group-sm center-block">
+
+            <label class="sr-only" for="Filial">Filial</label>
+            @if (ViewBag.Filial != null)
+            {
+                @Html.DropDownList("Descripcion", ViewBag.Filial as IEnumerable<SelectListItem>, "Seleccione la Filial", htmlAttributes: new { @class = "form-control", style = "margin-left :20px ;margin-top: 15px;" })
+            }
+            else
+            {
+                return;
+            }
+
+
+        </div>
+        <div class="form-group form-group-sm">
+
+            <label class="sr-only" for="Departamento">Departamento</label>
+            @if (ViewBag.dpto != null)
+            {
+                @Html.DropDownList("IdDepartamentoss", ViewBag.dpto as IEnumerable<SelectListItem>, "Seleccione el Departamento", htmlAttributes: new { @class = "form-control", style = "margin-left :10px ;margin-top: 15px;" })
+            }
+            else
+            {
+                return;
+            }
+        </div>
+
+        <div class="form-group form-group-sm" style="margin-left :10px; margin-top: 15px;">
+            <label class="sr-only" for="Administrador">Administrador o Encargado</label>
+            <input type="text" class="form-control" name="Administrador" id="Administrador" placeholder="Administrador o Encargado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+            <label class="sr-only" for="date">Fecha</label>
+            <input type="datetime-local" name="Fecha" class="form-control" id="Fecha" placeholder="Fecha" required>
+        </div>
+
+
+        <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+            <label class="sr-only" for="nombrearea">Nombre del Área o Dpto</label>
+            <input type="text" name="nombrearea" class="form-control" id="nombrearea" placeholder="Nombre del Área o Dpto." required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-top: 15px; margin-left :20px ">
+            <label class="sr-only" for="cursorequerido">Nombre del Área o Dpto</label>
+            <input type="text" name="cursorequerido" class="form-control" id="cursorequerido" placeholder="Curso Requerido." required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+            <label class="sr-only" for="cantidadempleado">Cantidad de Empleado</label>
+            <input type="number" name="cantidadempleado" class="form-control" id="cantidadempleado" placeholder="Cantidad de Empleado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+            <label class="sr-only" for="puestoempleado">Puesto del Empleado</label>
+            <input type="text" name="puestoempleado" class="form-control" id="puestoempleado" placeholder="Puesto del Empleado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+
+            <select class="form-control" name="importancia" id="importancia" required>
+                <option>Importancia de la Capacitacion</option>
+                <option>Alto</option>
+                <option>Medio</option>
+                <option>Bajo</option>
+
+            </select>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+
+            <select class="form-control" name="Region" id="Region" required>
+                <option>Region de la Capacitacion</option>
+                <option>Norte</option>
+                <option>Sur</option>
+                <option>Este</option>
+
+            </select>
+        </div>
+        <br /> <br />
+
+
+        <button type="submit" class="btn btn-primary" style="margin-left :500px ;" id="btngh" onclick="">Enviar Requerimiento</button>
+
+    </div>
+
+
+
+</form>
+<br />
+<br />
+<div class="btn-group-justified">
+    <a href="~/UnidadCapacitacion/ReporteCapacitacion" class="btn btn-primary"
+       style="margin-left :500px ;" id="btngh" onclick="">Ver Reporte Requerimiento</a>
+
+    <a href="~/UnidadCapacitacion/ExportListUsingEPPlus" class="btn btn-primary"
+       style="margin-left :500px ;" id="btngh" onclick="">Exportar a Excel</a>
+</div>
+<br />
+<br />
+<div class="row" style=" margin-top: 15px;">
+    <div class="col-md-12">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Filial</th>
+                    <th>Departamento</th>
+                    <th>Puesto del Empleado</th>
+                    <th>Curso Requerido</th>
+                    <th>Importancia</th>
+                    <th>Cantidad de Empleado</th>
+                    <th>Fecha de Solicitud</th>
+
+                    <th>Accion</th>
+
+                </tr>
+            </thead>
+            @if (ViewBag.result != null)
+            {
+                foreach (var elemento in ViewBag.result)
+                {
+            <tr>
+
+                
+
+                <td>@elemento.filial </td>
+                <td>@elemento.departamento </td>
+                <td>@elemento.puestoempleado</td>
+
+                <td>@elemento.cursorequerido</td>
+                <td>@elemento.importanciacurso</td>
+                <td>@elemento.cantidadempleados </td>
+                <td>@elemento.fechasolicitud </td>
+
+
+
+                <td>
+                    Botones Editar Eliminar
+                    @Html.ActionLink("Editar", "Edit", new { id = elemento.idUnidaddeCaptacion }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Eliminar", "Delete", new { id = elemento.idUnidaddeCaptacion }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+                }
+            }
+            else
+            {
+                return;
+            }
+            <!-- Recorro el modelo para imprimir datos -->
+
+        </table>
+
+    </div>
+</div>
+
+@if (ViewBag.result != null)
+{
+
+
+    foreach (var elemento in ViewBag.result)
+    {
+  
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">&times;</span></button>*@
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+
+                   
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+
+                                <label class="sr-only" for="Filial">Filial</label>
+                                @if (ViewBag.Filial != null)
+                                {
+                                    @Html.DropDownList("Descripcion", ViewBag.Filial as IEnumerable<SelectListItem>, "Seleccione la Filial", htmlAttributes: new { @class = "form-control", style = "margin-left :20px ;margin-top: 15px;" })
+                                }
+                                else
+                                {
+                                    return;
+                                }
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label class="sr-only" for="Departamento">Departamento</label>
+                                @if (ViewBag.dpto != null)
+                                {
+                                    @Html.DropDownList("IdDepartamentoss", ViewBag.dpto as IEnumerable<SelectListItem>, "Seleccione el Departamento", htmlAttributes: new { @class = "form-control", style = "margin-left :10px ;margin-top: 15px;" })
+                                }
+                                else
+                                {
+                                    return;
+                                }
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px; margin-top: 15px;">
+                                <label class="sr-only" for="Administrador">Administrador o Encargado</label>
+                                <input type="text" class="form-control" name="Administrador" id="Administrador" placeholder="Administrador o Encargado" required>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+                                <label class="sr-only" for="date">Fecha</label>
+                                <input type="datetime-local" name="Fecha" class="form-control" id="Fecha" placeholder="Fecha" required>
+                            </div>
+
+
+                            <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+                                <label class="sr-only" for="nombrearea">Nombre del Área o Dpto</label>
+                                <input type="text" name="nombrearea" class="form-control" id="nombrearea" placeholder="Nombre del Área o Dpto." required>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-top: 15px; margin-left :20px ">
+                                <label class="sr-only" for="cursorequerido">Nombre del Área o Dpto</label>
+                                <input type="text" name="cursorequerido" class="form-control" id="cursorequerido" placeholder="Curso Requerido." required>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+                                <label class="sr-only" for="cantidadempleado">Cantidad de Empleado</label>
+                                <input type="number" name="cantidadempleado" class="form-control" id="cantidadempleado" placeholder="Cantidad de Empleado" required>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+                                <label class="sr-only" for="puestoempleado">Puesto del Empleado</label>
+                                <input type="text" name="puestoempleado" class="form-control" id="puestoempleado" placeholder="Puesto del Empleado" required>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+
+                                <select class="form-control" name="importancia" id="importancia" required>
+                                    <option>Importancia de la Capacitacion</option>
+                                    <option>Alto</option>
+                                    <option>Medio</option>
+                                    <option>Bajo</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+
+                                <select class="form-control" name="Region" id="Region" required>
+                                    <option>Region de la Capacitacion</option>
+                                    <option>Norte</option>
+                                    <option>Sur</option>
+                                    <option>Este</option>
+
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function (event) {
+        //you can use jQuery there
+
+    $('#btngh').click(function (e) {
+        if ($('#Descripcion').val() === "") {
+            sweetAlert("¡El expediente no debe estar vacío!");
+            // alert ("¡El archivo no debe estar vacío!");
+            return false;
+        }
+        else if ($('#nombrearea').val() === "") {
+            sweetAlert("¡El Campo Cantidad Donar no debe estar vacío!");
+            // alert ("¡El archivo no debe estar vacío!");
+            return false;
+        }
+
+        $('#btngh').click(
+            function (e) {
+                var res = validate();
+                if (res == false) {
+                    return false;
+                }
+
+                var url = '@Url.Action("UnidadCapacitacion", "UnidadCapacitacion")';
+                var empObj = {
+
+                    Descripcion: $('#Descripcion').val(),
+                    Departamento: $('#Departamento').val(),
+                    Fecha: $('#Fecha').val(),
+                    Administrador: $('#Administrador').val(),
+                    nombrearea: $('#nombrearea').val(),
+                    cursorequerido: $('#cursorequerido').val(),
+                    cantidadempleado: $('#cantidadempleado').val(),
+                    importancia: $('#importancia').val(),
+                    puestoempleado: $('#puestoempleado').val(),
+                    IdDepartamentoss: $('#IdDepartamentoss').val(),
+                    Region: $('#Region').val(),
+
+                }
+
+                $.ajax({
+                    url: url,
+                    data: JSON.stringify(empObj),
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+
+            });
+    });
+
+        $('#Editar').click(
+            function getbyID(idUnidaddeCaptacion) {
+                $('#Name').css('border-color', 'lightgrey');
+                $('#Age').css('border-color', 'lightgrey');
+                $('#State').css('border-color', 'lightgrey');
+                $('#Country').css('border-color', 'lightgrey');
+                var url = '@Url.Action("UnidadCapacitacion", "GetbyID")';
+                $.ajax({
+                    url: url + idUnidaddeCaptacion,
+                    typr: "GET",
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (result) {
+                        $('#EmployeeID').val(result.EmployeeID);
+                        $('#Name').val(result.Name);
+                        $('#Age').val(result.Age);
+                        $('#State').val(result.State);
+                        $('#Country').val(result.Country);
+
+                        $('#myModal').modal('show');
+                        $('#btnUpdate').show();
+                  
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+                return false;
+            })
+
+        //function for updating employee's record
+        function Update() {
+            var res = validate();
+            if (res == false) {
+
+
+                function Update() {
+                    var res = validate();
+                    if (res == false) {
+                        return false;
+                    }
+                    var empObj = {
+                        Descripcion: $('#Descripcion').val(),
+                        Departamento: $('#Departamento').val(),
+                        Fecha: $('#Fecha').val(),
+                        Administrador: $('#Administrador').val(),
+                        nombrearea: $('#nombrearea').val(),
+                        cursorequerido: $('#cursorequerido').val(),
+                        cantidadempleado: $('#cantidadempleado').val(),
+                        importancia: $('#importancia').val(),
+                        puestoempleado: $('#puestoempleado').val(),
+                        IdDepartamentoss: $('#IdDepartamentoss').val(),
+                        Region: $('#Region').val(),
+                    };
+                    $.ajax({
+                        url: "/Home/Update",
+                        data: JSON.stringify(empObj),
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+                            loadData();
+                            $('#myModal').modal('hide');
+                            $('#EmployeeID').val("");
+                            $('#Name').val("");
+                            $('#Age').val("");
+                            $('#State').val("");
+                            $('#Country').val("");
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
+                    });
+                }
+
+            }
+        }
+
+
+    });
+</script>
+
+

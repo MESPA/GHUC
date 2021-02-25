@@ -1,0 +1,79 @@
+﻿@model IEnumerable<GHMNUNIDADDECAPACITACION.Models.UnidaddeCaptacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Formulario de Requerimiento</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva Solicitud", "Create" ,  new {@class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.filial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puestoempleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechasolicitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Areadepartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cursorequerido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importanciacurso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadempleados)
+        </th>
+        
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.filial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puestoempleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechasolicitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Areadepartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cursorequerido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importanciacurso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadempleados)
+        </td>
+       
+      
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.idUnidaddeCaptacion }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.idUnidaddeCaptacion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idUnidaddeCaptacion })
+        </td>
+    </tr>
+}
+
+</table>

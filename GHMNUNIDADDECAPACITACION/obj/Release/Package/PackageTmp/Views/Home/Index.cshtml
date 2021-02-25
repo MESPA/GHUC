@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="~/Scripts/sweetalert.js"></script>
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
+
+@if (ViewBag.messs != null)
+{
+    <script>
+        swal({
+            title: "Buen Trabajo",
+            text: "El registro fue Agregado exitosamente",
+            icon: "success",
+        },
+            function (e, btn) {
+                window.location.href = "../Home/Ind"
+
+            }
+        );
+
+    </script>
+}
+else
+{
+    <script>
+
+        
+
+    </script>
+}
+
+<div class="jumbotron">
+    <h3>ASOCIACIÓN DOMINICANA DE REHABILITACIÓN, INC</h3>
+    <p class="lead">
+        Unidad  de Capacitación.
+        Formulario Detención de Necesidades para Departamento de Capacitación.
+    </p>
+
+    <div class="form-group form-group-sm ">
+
+        <center>
+           
+        </center>
+    </div>
+</div>

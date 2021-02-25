@@ -1,0 +1,194 @@
+﻿
+
+@{
+    ViewBag.Title = "UnidadCapacitacion";
+}
+
+<h2>Formulario de Requerimiento</h2>
+
+<form class="form-inline table-bordered center-block " method="post">
+    <div class="row">
+
+        <div class="form-group form-group-sm center-block">
+
+            <label class="sr-only" for="Filial">Filial</label>
+            @if (ViewBag.Filial != null)
+            {
+                @Html.DropDownList("Descripcion", ViewBag.Filial as IEnumerable<SelectListItem>, "Seleccione la Filial", htmlAttributes: new { @class = "form-control", style = "margin-left :20px ;margin-top: 15px;" })
+            }
+            else
+            {
+                return;
+            }
+
+
+        </div>
+        <div class="form-group form-group-sm">
+
+            <label class="sr-only" for="Departamento">Departamento</label>
+            @if (ViewBag.dpto != null)
+            {
+                @Html.DropDownList("IdDepartamentoss", ViewBag.dpto as IEnumerable<SelectListItem>, "Seleccione el Departamento", htmlAttributes: new { @class = "form-control", style = "margin-left :10px ;margin-top: 15px;" })
+            }
+            else
+            {
+                return;
+            }
+        </div>
+
+        <div class="form-group form-group-sm" style="margin-left :10px; margin-top: 15px;">
+            <label class="sr-only" for="Administrador">Administrador o Encargado</label>
+            <input type="text" class="form-control" name="Administrador" id="Administrador" placeholder="Administrador o Encargado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+            <label class="sr-only" for="date">Fecha</label>
+            <input type="datetime-local" name="Fecha" class="form-control" id="Fecha" placeholder="Fecha" required>
+        </div>
+
+
+        <div class="form-group form-group-sm" style="margin-left :10px ;margin-top: 15px">
+            <label class="sr-only" for="nombrearea">Nombre del Área o Dpto</label>
+            <input type="text" name="nombrearea" class="form-control" id="nombrearea" placeholder="Nombre del Área o Dpto." required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-top: 15px; margin-left :20px ">
+            <label class="sr-only" for="cursorequerido">Nombre del Área o Dpto</label>
+            <input type="text" name="cursorequerido" class="form-control" id="cursorequerido" placeholder="Curso Requerido." required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+            <label class="sr-only" for="cantidadempleado">Cantidad de Empleado</label>
+            <input type="text" name="cantidadempleado" class="form-control" id="cantidadempleado" placeholder="Cantidad de Empleado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+            <label class="sr-only" for="puestoempleado">Puesto del Empleado</label>
+            <input type="text" name="puestoempleado" class="form-control" id="puestoempleado" placeholder="Puesto del Empleado" required>
+        </div>
+        <div class="form-group form-group-sm" style="margin-left :10px ; margin-top: 15px;">
+
+            <select class="form-control" name="importancia" id="importancia" required>
+                <option>Importancia de la Capacitacion</option>
+                <option>Alto</option>
+                <option>Medio</option>
+                <option>Bajo</option>
+
+            </select>
+        </div>
+        <br />
+
+        <br />
+        <div class="form-group form-group-sm ">
+
+            <button type="submit" class="btn btn-primary" style="margin-left :500px ;" id="btngh" onclick="">Enviar Requerimiento</button>
+        </div>
+
+
+
+    </div>
+
+</form>
+
+
+
+<div class="row" style=" margin-top: 15px;">
+    <div class="col-md-12">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Departamento</th>
+                    <th>Puesto del Empleado</th>
+                    <th>Curso Requerido</th>
+                    <th>Importancia</th>
+                    <th>Fecha de Solicitud</th>
+                    @*<th>Accion</th>*@
+
+                </tr>
+            </thead>
+            @if (ViewBag.result != null)
+            {
+                foreach (var elemento in ViewBag.result)
+                {
+                    <tr>
+                        <td>@elemento.departamento </td>
+                        <td>@elemento.puestoempleado</td>
+
+                        <td>@elemento.cursorequerido</td>
+                        <td>@elemento.importanciacurso</td>
+                        <td>@elemento.fechasolicitud </td>
+
+                        <!--<td>-->
+                        <!-- Botones Editar Eliminar  -->
+                        <!--<input type="button" value="Editar" class="btn btn-default" />
+                            <input type="button" class="btn btn-danger" value="Eliminar" />
+                        </td>-->
+                    </tr>
+                }
+            }
+            else
+            {
+                return;
+            }
+            <!-- Recorro el modelo para imprimir datos -->
+
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function (event) {
+        //you can use jQuery there
+   
+    $('#btngh').click(function (e) {
+        if ($('#Descripcion').val() === "") {
+            sweetAlert("¡El expediente no debe estar vacío!");
+            // alert ("¡El archivo no debe estar vacío!");
+            return false;
+        }
+        else if ($('#nombrearea').val() === "") {
+            sweetAlert("¡El Campo Cantidad Donar no debe estar vacío!");
+            // alert ("¡El archivo no debe estar vacío!");
+            return false;
+        }
+
+        $('#btngh').click(
+            function (e) {
+                var res = validate();
+                if (res == false) {
+                    return false;
+                }
+
+                var url = "/UnidadCapacitacion/UnidadCapacitacion";
+                var empObj = {
+
+                    Descripcion: $('#Descripcion').val(),
+                    Departamento: $('#Departamento').val(),
+                    Fecha: $('#Fecha').val(),
+                    Administrador: $('#Administrador').val(),
+                    nombrearea: $('#nombrearea').val(),
+                    cursorequerido: $('#cursorequerido').val(),
+                    cantidadempleado: $('#cantidadempleado').val(),
+                    importancia: $('#importancia').val(),
+                    puestoempleado: $('#puestoempleado').val(),
+                    IdDepartamentoss: $('#IdDepartamentoss').val(),
+
+                }
+
+                $.ajax({
+                    url: url,
+                    data: JSON.stringify(empObj),
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+
+            });
+    });
+
+    });
+</script>
+
+
